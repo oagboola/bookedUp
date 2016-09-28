@@ -1,0 +1,15 @@
+html
+  head
+    title My fine page
+    include main
+
+  body(ng-app="bookedUpApp")
+    nav
+      .nav-wrapper.light-blue.accent-2
+        a.nav-wrapper(href="#") BooK
+        ul#nav-mobile.right.hide-on-med-and-down
+          li
+            a(href="#") Sass
+          li
+            a(href="#") Sass
+    div(ng-view)

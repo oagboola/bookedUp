@@ -1,0 +1,22 @@
+{
+  "name": "bookedup",
+  "description": "Give out books you don't need anymore to those that do",
+  "main": "server.js",
+  "authors": [
+    "andela-oagboola <olaide.agboola@andela.co>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8"
+  }
+}

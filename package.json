@@ -1,0 +1,27 @@
+{
+  "name": "bookedup",
+  "version": "0.0.1",
+  "description": "Give out books you don't need anymore to those that do",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "express-session": "^1.14.1",
+    "gulp-jade": "^1.1.0",
+    "gulp-nodemon": "^2.1.0",
+    "gulp-sass": "^2.3.2",
+    "mongoose": "^4.6.1",
+    "mongoose-unique-validator": "^1.0.2",
+    "passport-local": "^1.0.0"
+  }
+}
