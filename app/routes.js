@@ -8,12 +8,23 @@ module.exports = function(app){
     res.sendfile('public/index.html');
   });
 
-  //users
   app.route('/signup')
       .post(users.signup);
 
   app.route('/signin')
       .post(users.login);
+
+  app.get('/auth/facebook', passport.authenticate('facebook'));
+
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook',
+      {
+        successRedirect: '/books',
+        failureRedirect: '/',
+        scope: ['email', 'public_profile']
+      }
+    )
+  );
 
   app.route('/logout')
       .get(users.logout);

@@ -36,6 +36,11 @@ gulp.task('sass', function(){
       .pipe(gulp.dest('public/styles'));
 })
 
+gulp.task('scripts', function(){
+  gulp.src(paths.scripts)
+      .pipe(uglify())
+      .pipe(gulp.dest('public'))
+});
 
 gulp.task('browserify', function(){
   gulp.src('client/app.module.js')
@@ -53,9 +58,9 @@ gulp.task('nodemon', function(){
 gulp.task('watch', function(){
   gulp.watch(paths.jade, ['jade']);
   gulp.watch(paths.sass, ['sass']);
-  gulp.watch(paths.scripts, ['browserify']);
+  gulp.watch(paths.scripts, ['scripts', 'browserify']);
 });
 
-gulp.task('build', ['jade', 'sass', 'browserify']);
+gulp.task('build', ['jade', 'sass', 'scripts', 'browserify']);
 
-gulp.task('default', ['nodemon', 'build', 'watch', 'browserify']);
+gulp.task('default', ['nodemon', 'build', 'watch']);

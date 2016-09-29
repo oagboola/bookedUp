@@ -11,7 +11,11 @@ var usersSchema = Schema({
   password: String,
   firstname: String,
   lastname: String,
-  provider: String
+  provider: String,
+  createdOn: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 usersSchema.plugin(uniqueValidator);
