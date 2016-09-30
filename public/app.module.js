@@ -1,1 +1,0 @@
-var bookedUpApp=angular.module("bookedUpApp",["ngRoute"]);bookedUpApp.config(["$routeProvider",function(o){o.when("/",{templateUrl:"home/home.html"}),$locationProvider.html5Mode(!0)}]);

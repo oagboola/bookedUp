@@ -14,17 +14,33 @@ module.exports = function(app){
   app.route('/signin')
       .post(users.login);
 
+
+  //facebook
+
   app.get('/auth/facebook', passport.authenticate('facebook'));
 
-  app.get('/auth/facebook/callback',
-    passport.authenticate('facebook',
-      {
-        successRedirect: '/books',
-        failureRedirect: '/',
-        scope: ['email', 'public_profile']
-      }
-    )
-  );
+  app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+    successRedirect: '/books',
+    failureRedirect: '/',
+    scope: ['email', 'public_profile']
+  }));
+
+  //twitter
+
+  app.get('/auth/twitter', passport.authenticate('twitter'));
+
+  app.get('/twitter/callback', passport.authenticate('twitter', {
+    successRedirect: '/books',
+    failureRedirect: '/'
+  }));
+
+  //google
+  app.get('/auth/google', passport.authenticate('google', {successRedirect: '/books', scope: ['profile', 'email']}));
+
+  app.get('/auth/google/callback', passport.authenticate('google', {
+    failureRedirect: '/',
+    successRedirect: '/books'
+  }))
 
   app.route('/logout')
       .get(users.logout);

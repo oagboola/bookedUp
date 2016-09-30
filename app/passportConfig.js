@@ -1,6 +1,7 @@
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
-    GoogleStrategy = require('passport-google-oauth').OAuthStrategy,
+    GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
+    TwitterStrategy = require('passport-twitter').Strategy,
     FacebookStrategy = require('passport-facebook').Strategy,
     User = require('./models/users.model'),
     Account = require('./models/accounts.model');
@@ -45,8 +46,7 @@ module.exports = function(){
     callbackURL: "http://localhost:5000/auth/facebook/callback",
     profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name', 'verified']
   },
-  function(req, accessToken, refreshToken, profile, done) {
-
+  function(accessToken, refreshToken, profile, done) {
     var userProfile = profile._json;
     User.findOne({email: userProfile.email}, function(err, user){
       if(err){
@@ -71,4 +71,46 @@ module.exports = function(){
   }
   ));
 
+  //config for twitter auth
+
+  passport.use(new TwitterStrategy({
+    consumerKey: process.env.TWITTER_CONSUMER_KEY,
+    consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+    callbackUrl: 'http://localhost:5000/twitter/callback'
+  },
+  function(token, tokenSecret, profile, done){
+    var userProfile = profile._json;
+    // User.findOne({email: userProfile.})
+  }));
+
+  //config for google auth
+  passport.use(new GoogleStrategy({
+    clientID: '1083835154214-82kq91lvsdl3tl23eqt25qblu2hiu8ch.apps.googleusercontent.com',
+    clientSecret: 'CVt-cFffWpAbNHEiHlIea6_S',
+    callbackURL: 'http://localhost:5000/auth/google/callback'
+  },
+  function(token, tokenSecret, profile, done){
+    var userProfile = profile._json;
+    User.findOne({email: userProfile.emails[0].value}, function(err, user){
+      if(err){
+        return done(err)
+      }
+      if(user){
+        return done(null, user);
+      }
+
+      var user = new User();
+
+      user.lastname = userProfile.name.familyName;
+      user.firstname = userProfile.name.givenName;
+      user.email = userProfile.emails[0].value;
+
+      user.save(function(err, user){
+        if(err){
+          return done(err);
+        }
+        return done(null, user);
+      });
+    });
+  }));
 }

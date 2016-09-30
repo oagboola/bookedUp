@@ -7,5 +7,5 @@ bookedUpApp.config(['$routeProvider', function($routeProvider){
   });
 
   //use the HTML5 History API (get rid of the # in the urls)
-  $locationProvider.html5Mode(true);
+  // $locationProvider.html5Mode(true);
 }]);
