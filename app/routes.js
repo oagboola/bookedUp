@@ -14,7 +14,6 @@ module.exports = function(app){
   app.route('/signin')
       .post(users.login);
 
-
   //facebook
 
   app.get('/auth/facebook', passport.authenticate('facebook'));

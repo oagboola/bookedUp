@@ -1,4 +1,4 @@
-.home-container.row
+.home-container.row(ng-controller="HomeController as home")
   .col.s2.left-panel
     h2.center-align.give-text Give
       br
@@ -24,19 +24,44 @@
       .row.authentication-box
         .col.s4.offset-s4
           .row
-            h3.white-text.center-align Sign up
-          .row.z-depth-4.white.signup-box
-            form.col.s12.white-text
-              .row
-                .input-field.col.s12
-                  i.material-icons.prefix account_circle
-                  input(type="email", placeholder="Email address", id="email")
-                  label(for="email") Email
-              .row
-                .input-field.col.s12
-                  i.material-icons.prefix account_circle
-                  input(type="password", placeholder="password", id="password")
-                  label(for="password") Password
-              .row
-                button.right.btn.waves-effect.waves-light(type="submit") Sign up
-                  i.material-icons.right send
+            h3.white-text.center-align Welcome
+          .row
+            .col.s12
+              ul.tabs
+                li.tab.col.s3
+                  a.active(href='#login') Login
+                li.tab.col.s3
+                  a(href='#signup') Signup
+            #login.col.s12
+              .row.z-depth-4.white.signup-box
+                form.col.s12(name="loginForm" novalidate)
+                  .row
+                    .input-field.col.s12
+                      i.material-icons.prefix account_circle
+                      input(type="email", id="email", ng-model="home.userLogin.email", required)
+                      label(for="email") Email
+                  .row
+                    .input-field.col.s12
+                      i.material-icons.prefix account_circle
+                      input(type="password", id="password", value="laide", ng-model="home.userLogin.password", required)
+                      label(for="password") Password
+                  .row
+                    button.right.btn.waves-effect.waves-light(type="submit", ng-click="home.login()", ng-disabled="loginForm.$invalid") Login
+                      i.material-icons.right send
+            #signup.col.s12
+              .row.z-depth-4.white.signup-box
+                .row Faceook Twitter and Google
+                form.col.s12(name="newUser" novalidate)
+                  .row
+                    .input-field.col.s12
+                      i.material-icons.prefix account_circle
+                      input(type="email", id="email", ng-model="home.userSignup.email", required)
+                      label(for="email") Email
+                  .row
+                    .input-field.col.s12
+                      i.material-icons.prefix account_circle
+                      input(type="password", id="password", ng-model="home.userSignup.password", required)
+                      label(for="password") Password
+                  .row
+                    button.right.btn.waves-effect.waves-light(type="submit", ng-click="home.signup()", ng-disabled="newUser.$invalid") Sign up
+                      i.material-icons.right send

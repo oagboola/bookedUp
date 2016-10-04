@@ -9,7 +9,7 @@ module.exports = {
     user.provider = 'local';
 
     //encrypt password before saving it into DB
-    password.encrypt(user.password).then(function(hash, error){
+    return password.encrypt(user.password).then(function(hash, error){
       user.password = hash;
       user.save(function(err, user){
         if(err){
@@ -39,7 +39,7 @@ module.exports = {
         user.password = undefined;
         req.login(user, function(err){
           if(err){
-            res.status(400).send(err);;
+            res.status(401).send(err);;
           }
           else {
             res.json(user);
@@ -55,9 +55,7 @@ module.exports = {
   authenticate: function(req, res, next){
     //check if we have a signed in user
     if(!req.isAuthenticated()){
-      res.json({
-        message: 'User is not logged in'
-      })
+      res.redirect('/');
       return;
     }
     next();
