@@ -5,12 +5,12 @@ html
     include main
 
   body(ng-app="bookedUpApp")
-    nav
+    nav(ng-controller="IndexController as index")
       .nav-wrapper.light-blue.accent-2
         a.nav-wrapper(href="#") BooK
-        ul#nav-mobile.right.hide-on-med-and-down
+        ul#nav-mobile.right.hide-on-med-and-down(ng-if="index.user.email")
           li
-            a(href="#") Sass
+            a(href="#") Signed in as {{index.user.email}}
           li
-            a(href="#") Sass
+            a(href="#", ng-click="index.logout()") Logout
     div(ng-view)

@@ -10,11 +10,11 @@
     home.userSignup = {};
     home.userLogin = {};
 
-    home.userSignup.email = 'laide@b.com';
-    home.userSignup.password = 'laide';
-
-    home.userLogin.email = 'laide@b.com';
-    home.userLogin.password = 'laide';
+    authenticationService.currentUser().then(function(user){
+     if(user.data != ""){
+      $location.path('/books');
+     }
+    });
 
     home.signup = function(){
       authenticationService.signup(home.userSignup).then(function(user){

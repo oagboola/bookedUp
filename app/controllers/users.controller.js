@@ -59,5 +59,14 @@ module.exports = {
       return;
     }
     next();
+  },
+  currentUser: function(req, res){
+    if(req.user){
+      req.user.password = undefined;
+      return res.json(req.user)
+    }
+    res.status(404).send({
+      message: 'User not logged in'
+    });
   }
 }

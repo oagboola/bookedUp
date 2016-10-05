@@ -12,8 +12,11 @@
       login: function(user){
         return $http.post('/signin', user)
       },
-      isLoggedIn: function(){
+      currentUser: function(){
         return $http.get('/user')
+      },
+      logout: function(){
+        return $http.get('/logout');
       }
     }
   }
