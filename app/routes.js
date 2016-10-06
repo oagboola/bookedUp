@@ -3,11 +3,6 @@ var books = require('./controllers/books.controller'),
 
 module.exports = function(app){
 
-  //landing page
-  app.get('/', function(req, res){
-    res.sendfile('public/index.html');
-  });
-
   app.route('/signup')
       .post(users.signup);
 
@@ -47,12 +42,16 @@ module.exports = function(app){
   }))
 
   //books
-  app.route('/books')
+  app.route('api/books')
     .get(users.authenticate, books.listBooks)
     .post(books.createBook);
 
-  app.route('/books/:bookId')
+  app.route('api/books/:bookId')
     .get(users.authenticate, users.authenticate, books.findBook)
     .delete(users.authenticate, books.deleteBook)
     .put(users.authenticate, books.update);
+
+  app.get('/*', function(req, res){
+    res.sendfile('public/index.html');
+  });
 }
