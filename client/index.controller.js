@@ -6,15 +6,21 @@
   function IndexController(authenticationService, $location, $http){
     var index = this;
 
-    index.user = {};
+    index.user = {}
 
     authenticationService.currentUser().then(function(user){
-     index.user.email = user.data.email;
-    }).catch(function(error){});
+      index.user.email = user.data.email;
+      if($location.path() == '/'){
+        $location.path('/books');
+      }
+    }).catch(function(error){
+      $location.path('/')
+    });
 
     index.logout = function(){
       $http.get('/logout').then(function(response){
-        $location.path('/')
+        index.user = {};
+        $location.path('/');
       })
     }
   }

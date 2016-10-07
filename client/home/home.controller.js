@@ -5,16 +5,13 @@
   HomeController.$inject = ['authenticationService', '$location'];
 
   function HomeController(authenticationService, $location){
+
+    //enable materialisecss tabs
     $('ul.tabs').tabs();
+
     var home = this;
     home.userSignup = {};
     home.userLogin = {};
-
-    authenticationService.currentUser().then(function(user){
-     if(user.data != ""){
-      $location.path('/books');
-     }
-    });
 
     home.signup = function(){
       authenticationService.signup(home.userSignup).then(function(user){
