@@ -6,6 +6,7 @@ var mongoose = require('mongoose'),
   session = require('express-session')
   passport = require('passport'),
   passportConfig = require('./app/passportConfig'),
+  morgan = require('morgan'),
   mongoStore = require('connect-mongo')({session: session});;
 
 var app = express();
@@ -14,6 +15,8 @@ var port = process.env.port || '5000';
 mongoose.connect(dbConfig.developmentDb);
 
 app.use(bodyParser.json());
+
+app.use(morgan('dev'))
 
 app.use(session({
   saveUninitialized: true,

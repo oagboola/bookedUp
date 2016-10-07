@@ -85,8 +85,8 @@ module.exports = function(){
 
   //config for google auth
   passport.use(new GoogleStrategy({
-    clientID: '1083835154214-82kq91lvsdl3tl23eqt25qblu2hiu8ch.apps.googleusercontent.com',
-    clientSecret: 'CVt-cFffWpAbNHEiHlIea6_S',
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: 'http://localhost:5000/auth/google/callback'
   },
   function(token, tokenSecret, profile, done){

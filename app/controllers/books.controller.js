@@ -33,12 +33,12 @@ module.exports = {
     });
   },
   deleteBook: function(req, res){
-    Books.remove({_id: req.params.bookId}, function(err, book){
+    Books.remove({_id: req.params.bookId}, function(err, response){
       if (err) {
         res.json(err);
       }
       else{
-        res.json(book);
+        res.json(response);
       }
     });
   },

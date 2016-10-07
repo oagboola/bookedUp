@@ -8,8 +8,6 @@ module.exports = {
     });
   },
   decrypt: function(password, hash){
-    return new Promise(function(resolve, reject){
-      resolve(bcrypt.compareSync(password, hash));
-    });
+    return bcrypt.compareSync(password, hash);
   }
 }

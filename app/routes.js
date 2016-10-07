@@ -14,6 +14,10 @@ module.exports = function(app){
   app.route('/signin')
       .post(users.login);
 
+  app.route('/logout')
+      .get(users.logout);
+
+  app.get('/user', users.currentUser);
 
   //facebook
 
@@ -41,9 +45,6 @@ module.exports = function(app){
     failureRedirect: '/',
     successRedirect: '/books'
   }))
-
-  app.route('/logout')
-      .get(users.logout);
 
   //books
   app.route('/books')
