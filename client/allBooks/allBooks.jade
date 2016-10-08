@@ -1,1 +1,17 @@
-div See all the books we have
+.row(ng-controller="booksListController as books")
+  .col.s2
+    .card
+      .card-image.waves-effect.waves-block.waves-light
+        img.activator(src='http://www.creativindie.com/wp-content/uploads/2013/10/Enchantment-Book-Cover-Best-Seller1.jpg')
+      .card-content
+        span.card-title.activator.grey-text.text-darken-4
+          | Book Title
+          i.material-icons.right more_vert
+        p
+          a(href='#') This is a link
+      .card-reveal
+        span.card-title.grey-text.text-darken-4
+          | Card Title
+          i.material-icons.right close
+        p
+          | Here is some more information about this product that is only revealed once clicked on.
