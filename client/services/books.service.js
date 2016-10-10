@@ -3,9 +3,11 @@
 
   booksService.$inject = ['$http']
 
-  function booksService(){
+  function booksService($http){
     return {
-
+      getBooks: function(){
+        return $http.get('/api/books')
+      }
     }
   }
 })();
