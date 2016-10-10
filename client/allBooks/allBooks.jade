@@ -1,1 +1,40 @@
-div See all the books we have
+.div(ng-controller="booksListController as books")
+  .row.container.right-align.newBook-action
+    a.btn-floating.btn-large.waves-effect.waves-light.orange.accent-2
+      i.material-icons add
+    span New Book
+  .row.container.book-tools
+    .col.s12
+      h5 Total Number of books available: {{books.bookCollection.length}}
+    .col.s12
+      .bookList-filters
+        | Categories:&nbsp&nbsp&nbsp
+        input.filled-in(type="checkbox", id="fiction")
+        label(for="fiction") Fiction &nbsp&nbsp&nbsp
+
+        input.filled-in(type="checkbox", id="educative")
+        label(for="educative") Educative &nbsp&nbsp&nbsp
+
+        input.filled-in(type="checkbox", id="comedy")
+        label(for="comedy") Comedy &nbsp&nbsp&nbsp
+
+        input.filled-in(type="checkbox", id="motivational")
+        label(for="motivational") Motivational &nbsp&nbsp&nbsp
+
+        input.filled-in(type="checkbox", id="history")
+        label(for="history") History &nbsp&nbsp&nbsp
+  .row.books-container
+    .col.s12.l4(ng-repeat="book in books.bookCollection")
+      .card.horizontal
+        .card-image
+          .book-cover
+        .card-stacked
+          .card-content
+            p {{book.title}}
+            p {{book.author}}
+            br
+            p {{books.summary | limitTo: 150}} {{books.summary.length > 150 ? '...' : ''}}
+            p.right-align
+              a(href='#') Read more
+          .card-action
+            a(href='#') Added by: Michael Jackson

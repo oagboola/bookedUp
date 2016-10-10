@@ -42,11 +42,11 @@ module.exports = function(app){
   }))
 
   //books
-  app.route('api/books')
+  app.route('/api/books')
     .get(users.authenticate, books.listBooks)
     .post(books.createBook);
 
-  app.route('api/books/:bookId')
+  app.route('/api/books/:bookId')
     .get(users.authenticate, users.authenticate, books.findBook)
     .delete(users.authenticate, books.deleteBook)
     .put(users.authenticate, books.update);
