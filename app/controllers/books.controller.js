@@ -1,9 +1,13 @@
-var Books = require('../models/books.model');
+var Books = require('../models/books.model'),
+    multer = require('multer'),
+    cloudinary = require('cloudinary');
 
 module.exports = {
   createBook: function(req, res){
     var body = req.body;
-    Books.create(body, function(err, book){
+    body.bookInfo.donor= req.user._id;
+
+    Books.create(body.bookInfo, function(err, book){
       if(err){
         res.json(err);
       }
@@ -62,5 +66,22 @@ module.exports = {
         res.json(book);
       }
     });
+  },
+  uploadBookCover: function(req, res, next){
+    if(req.file){
+      cloudinary.config({
+        cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+        api_key: process.env.CLOUDINARY_API_KEY,
+        api_secret: process.env.CLOUDINARY_API_SECRET
+      });
+
+      cloudinary.uploader.upload(req.file.path, function(result){
+        req.body.bookInfo.bookCover = result.url;
+        next();
+      })
+    }
+    else {
+      next()
+    }
   }
 }

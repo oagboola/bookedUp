@@ -1,7 +1,10 @@
 var books = require('./controllers/books.controller'),
-    users = require('./controllers/users.controller');
+    users = require('./controllers/users.controller'),
+    multer = require('multer');
 
 module.exports = function(app){
+
+  var upload = multer({dest: '../uploads'});
 
   app.route('/signup')
       .post(users.signup);
@@ -44,7 +47,7 @@ module.exports = function(app){
   //books
   app.route('/api/books')
     .get(users.authenticate, books.listBooks)
-    .post(books.createBook);
+    .post(upload.single('bookCover'), books.uploadBookCover, books.createBook);
 
   app.route('/api/books/:bookId')
     .get(users.authenticate, users.authenticate, books.findBook)

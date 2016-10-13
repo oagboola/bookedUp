@@ -1,1 +1,59 @@
-div Time to create a new book
+.row.newBookPage(ng-controller="NewBookController as newBook")
+  .col.s12
+    h3.center Add a New Book
+  .col.m12.l6
+    form.col.s12(name="newBookForm" novalidate)
+      .row
+        .input-field.col.s6
+          i.material-icons.prefix mode_edit
+          input#bookTitle(type="text", ng-model="newBook.book.title", name="title", required)
+          label(for="bookTitle") Title
+          p.form-error.right(ng-show="newBookForm.title.$invalid && newBookForm.title.$dirty") *Please add a title
+      .row
+        .input-field.col.s6
+          i.material-icons.prefix person_pin
+          input#bookAuthor(type="text", ng-model="newBook.book.author", name="author", required)
+          label(for="bookAuthor") Author(s)
+          p.form-error.right(ng-show="newBookForm.author.$invalid && newBookForm.author.$dirty") *Please put in the name of the author
+      .row
+        .input-field.col.s6
+          i.material-icons.prefix mode_edit
+          input#bookEdition(type="text", ng-model="newBook.book.edition")
+          label(for="bookEdition") Edition
+      .row
+        .input-field.col.s6
+          i.material-icons.prefix date_range
+          input#publicationDate.datepicker(type="text", ng-model="newBook.book.publicationDate")
+          label(for="publicationDate") Date of Publication
+      .row
+        .input-field.col.s6
+          i.material-icons.prefix publish
+          input#bookPublisher(type="text", ng-model="newBook.book.publisher")
+          label(for="bookPublisher") Publisher
+      .row
+        .input-field.col.s6
+          i.material-icons.prefix note
+          input#pageNumber(type="number", ng-model="newBook.book.pageNumber", name="pageNumber")
+          label(for="pageNumber") Number of Page
+      .row
+        .input-field.col.s6
+          i.material-icons.prefix date_range
+          input#purchaseDate.datepicker(type="text", ng-model="newBook.book.purchaseDate")
+          label(for="purchaseDate") Date bought
+      .row
+        .input-field.col.s12
+          i.material-icons.prefix description
+          textarea#bookSummary.materialize-textarea(ng-model="newBook.book.description", name="description" required)
+          label(for="bookSummary") Brief Description
+          p.form-error.right(ng-show="newBookForm.description.$invalid && newBookForm.description.$dirty") *Please put in a short description of the book
+  .col.m12.l6
+    .row
+      .file-field.input-field.col.s6.offset-s6
+        .btn.orange.accent-2.waves-effect.waves-light.right(ngf-select='newBook.upload($file)', name='bookCover')
+          span Cick to add image
+          input(type="file", name='bookCover')
+    .row.image-preview
+      img.right.bookCover(ngf-thumbnail="newBook.bookCover")
+  .col.s12
+    .btn.right(ng-click="newBook.create()" ng-disabled="newBookForm.$invalid")
+      span Add Book

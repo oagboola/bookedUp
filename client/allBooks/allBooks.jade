@@ -2,7 +2,7 @@
   .row.container.right-align.newBook-action
     a.btn-floating.btn-large.waves-effect.waves-light.orange.accent-2
       i.material-icons add
-    span New Book
+    a.create-newBook(href="/books/new") New Book
   .row.container.book-tools
     .col.s12
       h5 Total Number of books available: {{books.bookCollection.length}}
