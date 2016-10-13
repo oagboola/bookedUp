@@ -7,7 +7,8 @@ var booksSchema = Schema({
     required: true
   },
   donor: {
-    type: Schema.ObjectId
+    type: Schema.Types.ObjectId,
+    ref:  'User'
   },
   createdAt: {
     type: Date,
@@ -20,6 +21,7 @@ var booksSchema = Schema({
   pageNumber: Number,
   author: String,
   edition: String,
+  bookCover: String
 });
 
 module.exports = mongoose.model('Books', booksSchema);
