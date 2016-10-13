@@ -18,7 +18,6 @@ var paths = {
   jade: ['client/*.jade','client/**/*.jade'],
   sass: ['client/**/*.sass'],
   scripts: ['client/*.js', 'client/**/*.js'],
-  public: ['public/**/**.*']
 };
 
 gulp.task('jade', function(){
@@ -38,12 +37,12 @@ gulp.task('sass', function(){
 
 gulp.task('scripts', function(){
   gulp.src(paths.scripts)
-      .pipe(uglify())
-      .pipe(gulp.dest('public'))
+      .pipe(concat('build.js'))
+      .pipe(gulp.dest('public'));
 });
 
 gulp.task('browserify', function(){
-  gulp.src('client/app.module.js')
+  gulp.src('build.js')
       .pipe(browserify())
       .pipe(gulp.dest('public'));
 });

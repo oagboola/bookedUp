@@ -1,4 +1,4 @@
-var bookedUpApp = angular.module("bookedUpApp", ['ngRoute'])
+var bookedUpApp = angular.module("bookedUpApp", ['ngRoute', 'ngFileUpload'])
 
 bookedUpApp.config(['$routeProvider','$locationProvider', function($routeProvider, $locationProvider){
   $routeProvider
@@ -7,6 +7,9 @@ bookedUpApp.config(['$routeProvider','$locationProvider', function($routeProvide
   })
   .when('/books', {
     templateUrl: 'allBooks/allBooks.html'
+  })
+  .when('/books/new', {
+    templateUrl: 'newBook/newBook.html'
   })
   .otherwise({
     redirectTo: '/'
