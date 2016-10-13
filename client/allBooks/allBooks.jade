@@ -27,14 +27,14 @@
     .col.s12.l4(ng-repeat="book in books.bookCollection")
       .card.horizontal
         .card-image
-          .book-cover
+          .book-cover(style="background-image: url({{book.bookCover}})")
         .card-stacked
-          .card-content
+          .card-content.book-details
             p {{book.title}}
             p {{book.author}}
             br
-            p {{books.summary | limitTo: 150}} {{books.summary.length > 150 ? '...' : ''}}
-            p.right-align
-              a(href='#') Read more
+            p {{book.description | limitTo: 150}} {{book.description.length > 150 ? '...' : ''}}
+            p.right-align.more-details
+              a(href='/books/{{book._id}}') More details
           .card-action
             a(href='#') Added by: Michael Jackson
