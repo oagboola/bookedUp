@@ -1,0 +1,23 @@
+div.bookView(ng-controller="BookController as book")
+  h3.center {{book.currentBook.title}}
+  div.center {{book.currentBook.description}}
+
+  .row.book-container
+    .col.s6.center
+      .bookImage(style="background-image: url({{book.currentBook.bookCover}});")
+
+    .col.s6.bookSpecs
+      h4.center.orange-text Book Details
+      ul.collection.with-header
+        li.collection-header
+          h5 {{book.currentBook.title}}
+        li.collection-item Author: {{book.currentBook.author}}
+        li.collection-item Donated By: The man with a good heart
+        li.collection-item Published By: {{book.currentBook.publisher}}
+        li.collection-item Purchase Date: {{book.currentBook.purchaseDate}}
+        li.collection-item Number of Pages: {{book.currentBook.pageNumber}}
+        li.collection-item Edition: {{book.currentBook.edition}}
+
+  .row
+    a.btn.right(href="/contact") Request Book
+
