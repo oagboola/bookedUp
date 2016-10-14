@@ -1,10 +1,9 @@
 (function(){
   angular.module('bookedUpApp').controller('NewBookController', NewBookController)
 
-  NewBookController.$inject = ['Upload', 'authenticationService'];
+  NewBookController.$inject = ['Upload', 'authenticationService', '$location'];
 
-
-  function NewBookController (Upload, authenticationService){
+  function NewBookController (Upload, authenticationService, $location){
 
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
@@ -31,9 +30,9 @@
           url: '/api/books',
           data: {bookCover: newBook.bookCover, bookInfo: newBook.book}
       }).then(function (resp) {
-          // console.log('Success ', resp.config.data.file.name, resp.data);
-      }, function (resp) {
-          console.log('Error status: ', resp);
+          $location.path('/books');
+      }, function (error) {
+          console.log('Error:', error)
       }, function (evt) {
           var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
           // console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
