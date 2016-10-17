@@ -14,6 +14,9 @@ bookedUpApp.config(['$routeProvider','$locationProvider', function($routeProvide
   .when('/books/:bookId', {
     templateUrl: 'book/book.html'
   })
+  .when('/contact', {
+    templateUrl: 'contact/contact.html'
+  })
   .otherwise({
     redirectTo: '/'
   });

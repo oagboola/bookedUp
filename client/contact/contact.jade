@@ -1,0 +1,19 @@
+.contact-page.row
+ .contact-page-overlay
+  .col.s6.offset-s4
+    form.white.col.s8.contactForm
+      h3.center Contact Us
+      .row
+        .input-field.col.s12
+          input#name(type="text")
+          label(for="name") Name
+      .row
+        .input-field.col.s12
+          input#email(type="email")
+          label(for="email") Email Address
+      .row
+        .input-field.col.s12
+          textarea#message.materialize-textarea
+          label(for="message") Type in a message
+      .row
+        a.btn.right(href="#") Send
