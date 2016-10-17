@@ -57,8 +57,8 @@ module.exports = {
     });
   },
   update: function(req, res){
-    var book = req.body;
-    Books.findByIdAndUpdate(req.params.bookId, book, function(err, book){
+    var body = req.body;
+    Books.findByIdAndUpdate(req.params.bookId, body.bookInfo, function(err, book){
       if(err){
         res.json(err);
       }

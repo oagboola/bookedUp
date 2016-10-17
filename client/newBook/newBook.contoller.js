@@ -25,7 +25,6 @@
     }
 
     newBook.create = function () {
-
       Upload.upload({
           url: '/api/books',
           data: {bookCover: newBook.bookCover, bookInfo: newBook.book}

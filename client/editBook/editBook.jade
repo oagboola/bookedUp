@@ -1,0 +1,59 @@
+.row.newBookPage(ng-controller="EditBookController as bookToEdit")
+  .col.s12
+    h3.center Edit Book Details
+  .col.m12.l6
+    form.col.s12(name="editBookForm" novalidate)
+      .row
+        .input-field.col.s6
+          i.material-icons.prefix mode_edit
+          input#bookTitle(type="text", ng-model="bookToEdit.details.title", name="title", required)
+          label(for="bookTitle") Title
+          p.form-error.right(ng-show="editBookForm.title.$invalid && editBookForm.title.$dirty") *Please add a title
+      .row
+        .input-field.col.s6
+          i.material-icons.prefix person_pin
+          input#bookAuthor(type="text", ng-model="bookToEdit.details.author", name="author", required)
+          label(for="bookAuthor") Author(s)
+          p.form-error.right(ng-show="editBookForm.author.$invalid && editBookForm.author.$dirty") *Please put in the name of the author
+      .row
+        .input-field.col.s6
+          i.material-icons.prefix mode_edit
+          input#bookEdition(type="text", ng-model="bookToEdit.details.edition")
+          label(for="bookEdition") Edition
+      .row
+        .input-field.col.s6
+          i.material-icons.prefix date_range
+          input#publicationDate.datepicker(type="text", ng-model="bookToEdit.details.publicationDate")
+          label(for="publicationDate") Date of Publication
+      .row
+        .input-field.col.s6
+          i.material-icons.prefix publish
+          input#bookPublisher(type="text", ng-model="bookToEdit.details.publisher")
+          label(for="bookPublisher") Publisher
+      .row
+        .input-field.col.s6
+          i.material-icons.prefix note
+          input#pageNumber(type="number", ng-model="bookToEdit.details.pageNumber", name="pageNumber")
+          label(for="pageNumber") Number of Page
+      .row
+        .input-field.col.s6
+          i.material-icons.prefix date_range
+          input#purchaseDate.datepicker(type="text", ng-model="bookToEdit.details.purchaseDate")
+          label(for="purchaseDate") Date bought
+      .row
+        .input-field.col.s12
+          i.material-icons.prefix description
+          textarea#bookSummary.materialize-textarea(ng-model="bookToEdit.details.description", name="description" required)
+          label(for="bookSummary") Brief Description
+          p.form-error.right(ng-show="editBookForm.description.$invalid && editBookForm.description.$dirty") *Please put in a short description of the book
+  .col.m12.l6
+    .row
+      .file-field.input-field.col.s6.offset-s6
+        .btn.orange.accent-2.waves-effect.waves-light.right(ngf-select='bookToEdit.updateBookCover($file)', name='bookCover')
+          span Change Image
+          input(type="file", name='bookCover')
+    .row.image-preview
+      img.right.bookCover(ngf-thumbnail=" bookToEdit.newBookCover || bookToEdit.details.bookCover")
+  .col.s12
+    .btn.right(ng-click="bookToEdit.update()" ng-disabled="editBookForm.$invalid")
+      span Update Details

@@ -32,7 +32,7 @@ div(ng-controller="DonorBooksController as donorBooks")
           .card-content.book-details
             p {{book.title}}
               i.material-icons.right(tooltipped, data-position='bottom', data-delay='50', data-tooltip='Delete', href="#deleteModal", ng-click="donorBooks.deleteBook(book._id)")  delete
-              i.material-icons.right(tooltipped, data-position='bottom', data-delay='50', data-tooltip='Edit') edit
+              a.material-icons.right(tooltipped, data-position='bottom', data-delay='50', data-tooltip='Edit', href="/books/{{book._id}}/edit") edit
             p {{book.author}}
             br
             p {{book.description | limitTo: 150}} {{book.description.length > 150 ? '...' : ''}}

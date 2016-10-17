@@ -17,6 +17,9 @@ bookedUpApp.config(['$routeProvider','$locationProvider', function($routeProvide
   .when('/books/donor/:donorId', {
     templateUrl: 'donorBooks/donorBooks.html'
   })
+  .when('/books/:bookId/edit', {
+    templateUrl: 'editBook/editBook.html'
+  })
   .when('/contact', {
     templateUrl: 'contact/contact.html'
   })
