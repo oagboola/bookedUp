@@ -9,7 +9,7 @@
     index.user = {}
 
     authenticationService.currentUser().then(function(user){
-      index.user.email = user.data.email;
+      index.user = user.data;
       if($location.path() == '/'){
         $location.path('/books');
       }

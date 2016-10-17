@@ -10,6 +10,8 @@ html
         a.nav-wrapper(href="#") BooK
         ul#nav-mobile.right.hide-on-med-and-down(ng-if="index.user.email")
           li
+            a(href="/books/donor/{{index.user._id}}") Books by me
+          li
             a(href="#") Signed in as {{index.user.email}}
           li
             a(href="#", ng-click="index.logout()") Logout

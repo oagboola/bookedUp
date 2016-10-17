@@ -1,4 +1,4 @@
-var bookedUpApp = angular.module("bookedUpApp", ['ngRoute', 'ngFileUpload'])
+var bookedUpApp = angular.module("bookedUpApp", ['ngRoute', 'ngFileUpload', 'ui.materialize'])
 
 bookedUpApp.config(['$routeProvider','$locationProvider', function($routeProvider, $locationProvider){
   $routeProvider
@@ -13,6 +13,9 @@ bookedUpApp.config(['$routeProvider','$locationProvider', function($routeProvide
   })
   .when('/books/:bookId', {
     templateUrl: 'book/book.html'
+  })
+  .when('/books/donor/:donorId', {
+    templateUrl: 'donorBooks/donorBooks.html'
   })
   .when('/contact', {
     templateUrl: 'contact/contact.html'

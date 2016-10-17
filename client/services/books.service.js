@@ -10,6 +10,9 @@
       },
       getBookById: function(id){
         return $http.get('/api/books/' + id)
+      },
+      getBooksByDonor: function(donorId){
+        return $http.get('/api/books/donor/' + donorId);
       }
     }
   }

@@ -47,7 +47,7 @@ module.exports = {
     });
   },
   booksByDonor: function(req, res){
-    Books.find({donor: req.params.donor}, function(err, books){
+    Books.find({donor: req.params.donorId}, function(err, books){
       if(err){
         res.json(err);
       }
