@@ -13,6 +13,9 @@
       },
       getBooksByDonor: function(donorId){
         return $http.get('/api/books/donor/' + donorId);
+      },
+      deleteBook: function(bookId){
+        return $http.delete('/api/books/' + bookId);
       }
     }
   }

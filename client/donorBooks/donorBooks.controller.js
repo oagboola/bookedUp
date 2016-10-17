@@ -8,8 +8,21 @@
     var donorBooks = this;
     donorBooks.books = {}
 
-    booksService.getBooksByDonor($routeParams.donorId).then(function(response){
-      donorBooks.books = response.data;
-    });
+    var getBooks = function(){
+      booksService.getBooksByDonor($routeParams.donorId).then(function(response){
+        donorBooks.books = response.data;
+      });
+    }
+
+    getBooks();
+
+    donorBooks.deleteBook = function(bookId){
+      var decision = confirm('Delete book? Action cannot be reversed');
+      if(decision){
+        booksService.deleteBook(bookId).then(function(response){
+          getBooks();
+        })
+      }
+    }
   }
 })();
