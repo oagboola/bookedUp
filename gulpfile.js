@@ -16,7 +16,7 @@ var gulp = require('gulp'),
 var paths = {
   client: ['client/**/*.*'],
   jade: ['client/*.jade','client/**/*.jade'],
-  sass: ['client/**/*.sass'],
+  sass: ['client/**/*.sass', 'client/*.sass'],
   scripts: ['client/*.js', 'client/**/*.js'],
 };
 

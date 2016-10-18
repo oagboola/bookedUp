@@ -30,3 +30,16 @@ bookedUpApp.config(['$routeProvider','$locationProvider', function($routeProvide
   //use the HTML5 History API (get rid of the # in the urls)
   $locationProvider.html5Mode(true);
 }]);
+
+bookedUpApp.run(['$rootScope', 'authenticationService','$location', function($rootScope, authenticationService, $location){
+  $rootScope.$on('$routeChangeStart', function(){
+    authenticationService.currentUser().then(function(resp){
+      if($location.path() == '/'){
+        $location.path('/books');
+      }
+    }).catch(function(error){
+      $location.path('/')
+    })
+
+  })
+}]);
