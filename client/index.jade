@@ -5,14 +5,19 @@ html
     include main
 
   body(ng-app="bookedUpApp")
-    nav(ng-controller="IndexController as index")
-      .nav-wrapper.orange.accent-3
-        a.nav-wrapper(href="#") BooK
-        ul#nav-mobile.right.hide-on-med-and-down(ng-if="index.user.email")
-          li
-            a(href="/books/donor/{{index.user._id}}") Books by me
-          li
-            a(href="#") Signed in as {{index.user.email}}
-          li
-            a(href="#", ng-click="index.logout()") Logout
+    .navbar-fixed
+      nav.transparent(ng-controller="IndexController as index")
+        .nav-wrapper.main-header
+          a.brand-logo.orange-text(href="/") BookedUp
+          a.button-collapse(href='#', data-activates='mobile-demo')
+            i.material-icons menu
+          ul.right.hide-on-med-and-down(ng-show="index.user.email")
+            li
+              a(href="/books") Books
+            li
+              a(href="/books/donor/{{index.user._id}}") Books By Me
+            li
+              a(href="#") Signed in as {{index.user.email}}
+            li
+              a(ng-click="index.logout()") Logout
     div(ng-view)

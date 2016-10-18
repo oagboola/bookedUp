@@ -1,21 +1,15 @@
 (function(){
   angular.module('bookedUpApp').controller('IndexController', IndexController);
 
-  IndexController.$inject = ['authenticationService', '$location', '$http'];
+  IndexController.$inject = ['authenticationService', '$location', '$http', '$rootScope'];
 
-  function IndexController(authenticationService, $location, $http){
+  function IndexController(authenticationService, $location, $http, $rootScope){
     var index = this;
-
-    index.user = {}
+    index.user = {};
 
     authenticationService.currentUser().then(function(user){
       index.user = user.data;
-      if($location.path() == '/'){
-        $location.path('/books');
-      }
-    }).catch(function(error){
-      $location.path('/')
-    });
+    })
 
     index.logout = function(){
       $http.get('/logout').then(function(response){
