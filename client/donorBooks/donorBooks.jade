@@ -1,11 +1,11 @@
-div(ng-controller="booksListController as books")
+div(ng-controller="DonorBooksController as donorBooks")
   .row.container.right-align.newBook-action
     a.btn-floating.btn-large.waves-effect.waves-light.orange.accent-2
       i.material-icons add
     a.create-newBook(href="/books/new") New Book
   .row.container.book-tools
     .col.s12
-      h5 Total Number of books available: {{books.bookCollection.length}}
+      h5 Number of books donated: {{donorBooks.books.length}}
     .col.s12
       .bookList-filters
         | Categories:&nbsp&nbsp&nbsp
@@ -24,17 +24,18 @@ div(ng-controller="booksListController as books")
         input.filled-in(type="checkbox", id="history")
         label(for="history") History &nbsp&nbsp&nbsp
   .row.books-container
-    .col.s12.l4(ng-repeat="book in books.bookCollection")
+    .col.s12.l4(ng-repeat="book in donorBooks.books")
       .card.horizontal
         .card-image
-          .book-cover(style="background-image: url({{book.bookCover}})")
+          .book-cover(style="background-image: url({{book.bookCover || 'images/notAvailable.png'}})")
         .card-stacked
           .card-content.book-details
             p {{book.title}}
+              i.material-icons.right(tooltipped, data-position='bottom', data-delay='50', data-tooltip='Delete', href="#deleteModal", ng-click="donorBooks.deleteBook(book._id)")  delete
+              a.material-icons.right(tooltipped, data-position='bottom', data-delay='50', data-tooltip='Edit', href="/books/{{book._id}}/edit") edit
             p {{book.author}}
             br
             p {{book.description | limitTo: 150}} {{book.description.length > 150 ? '...' : ''}}
+          .card-action
             p.right-align.more-details
               a(href='/books/{{book._id}}') More details
-          .card-action
-            a(href='#') Added by: Michael Jackson

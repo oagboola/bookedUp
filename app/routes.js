@@ -46,13 +46,16 @@ module.exports = function(app){
 
   //books
   app.route('/api/books')
-    .get(users.authenticate, books.listBooks)
-    .post(upload.single('bookCover'), books.uploadBookCover, books.createBook);
+    .get(books.listBooks)
+    .post(users.authenticate, upload.single('bookCover'), books.uploadBookCover, books.createBook);
 
   app.route('/api/books/:bookId')
-    .get(users.authenticate, users.authenticate, books.findBook)
+    .get(users.authenticate, books.findBook)
     .delete(users.authenticate, books.deleteBook)
-    .put(users.authenticate, books.update);
+    .put(users.authenticate, upload.single('bookCover'),  books.uploadBookCover, books.update);
+
+  app.route('/api/books/donor/:donorId')
+    .get(users.authenticate, books.booksByDonor);
 
   app.get('/*', function(req, res){
     res.sendfile('public/index.html');
