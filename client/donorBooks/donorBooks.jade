@@ -1,8 +1,8 @@
 div(ng-controller="DonorBooksController as donorBooks")
   .row.container.right-align.newBook-action
-    a.btn-floating.btn-large.waves-effect.waves-light.orange.accent-2
-      i.material-icons add
-    a.create-newBook(href="/books/new") New Book
+    .fixed-action-btn(style='bottom: 45px; right: 24px;')
+      a.btn-floating.btn-large.waves-effect.waves-light.orange.accent-3(href="/books/new")
+        i.large.material-icons add
   .row.container.book-tools
     .col.s12
       h5 Number of books donated: {{donorBooks.books.length}}
@@ -31,11 +31,11 @@ div(ng-controller="DonorBooksController as donorBooks")
         .card-stacked
           .card-content.book-details
             p {{book.title}}
-              i.material-icons.right(tooltipped, data-position='bottom', data-delay='50', data-tooltip='Delete', href="#deleteModal", ng-click="donorBooks.deleteBook(book._id)")  delete
-              a.material-icons.right(tooltipped, data-position='bottom', data-delay='50', data-tooltip='Edit', href="/books/{{book._id}}/edit") edit
+              i.material-icons.right.grey-text.tools(tooltipped, data-position='bottom', data-delay='50', data-tooltip='Delete', href="#deleteModal", ng-click="donorBooks.deleteBook(book._id)")  delete
+              a.material-icons.right.grey-text.tools(tooltipped, data-position='bottom', data-delay='50', data-tooltip='Edit', href="/books/{{book._id}}/edit") edit
             p {{book.author}}
             br
             p {{book.description | limitTo: 150}} {{book.description.length > 150 ? '...' : ''}}
           .card-action
             p.right-align.more-details
-              a(href='/books/{{book._id}}') More details
+              a.grey-text.tools(href='/books/{{book._id}}') More details

@@ -35,12 +35,12 @@
             #login.col.s12
               .row.z-depth-4.white.signup-box
                 .row.center-align
-                  .col.s4
-                    a(href="/auth/facebook", target="_self") Facebook
-                  .col.s4
-                    a(href="#") Twitter
-                  .col.s4
-                    a(href="/auth/google", target="_self") Google
+                  .col.s6
+                    a(href="/auth/facebook", target="_self") Login with Facebook
+                  //- .col.s4
+                  //-   a(href="#") Twitter
+                  .col.s6
+                    a(href="/auth/google", target="_self") Login with Google
                 form.col.s12(name="loginForm" novalidate)
                   .row
                     .input-field.col.s12
@@ -49,21 +49,21 @@
                       label(for="email") Email
                   .row
                     .input-field.col.s12
-                      i.material-icons.prefix account_circle
+                      i.material-icons.prefix lock_outline
                       input(type="password", id="password", value="laide", ng-model="home.userLogin.password", required)
                       label(for="password") Password
                   .row
-                    button.right.btn.waves-effect.waves-light(type="submit", ng-click="home.login('local')", ng-disabled="loginForm.$invalid") Login
+                    button.right.btn.waves-effect.waves-light(type="submit", ng-click="home.login()", ng-disabled="loginForm.$invalid") Login
                       i.material-icons.right send
             #signup.col.s12
               .row.z-depth-4.white.signup-box
                 .row.center-align
-                  .col.s4
-                    a(href="/auth/facebook", target="_self") Facebook
-                  .col.s4
-                    a(href="#") Twitter
-                  .col.s4
-                    a(href="/auth/google", target="_self") Google
+                  .col.s6
+                    a(href="/auth/facebook", target="_self") Login with Facebook
+                  //- .col.s4
+                  //-   a(href="#") Twitter
+                  .col.s6
+                    a(href="/auth/google", target="_self") Login with Google
                 form.col.s12(name="newUser" novalidate)
                   .row
                     .input-field.col.s12
