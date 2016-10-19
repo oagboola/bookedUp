@@ -1,8 +1,8 @@
 div(ng-controller="booksListController as books")
   .row.container.right-align.newBook-action
-    a.btn-floating.btn-large.waves-effect.waves-light.orange.accent-2
-      i.material-icons add
-    a.create-newBook(href="/books/new") New Book
+    .fixed-action-btn(style='bottom: 45px; right: 24px;')
+      a.btn-floating.btn-large.waves-effect.waves-light.orange.accent-3(href="/books/new")
+        i.large.material-icons add
   .row.container.book-tools
     .col.s12
       h5 Total Number of books available: {{books.bookCollection.length}}
@@ -27,14 +27,13 @@ div(ng-controller="booksListController as books")
     .col.s12.l4(ng-repeat="book in books.bookCollection")
       .card.horizontal
         .card-image
-          .book-cover(style="background-image: url({{book.bookCover}})")
+          .book-cover(style="background-image: url({{book.bookCover || 'images/notAvailable.png' }})")
         .card-stacked
           .card-content.book-details
             p {{book.title}}
             p {{book.author}}
             br
             p {{book.description | limitTo: 150}} {{book.description.length > 150 ? '...' : ''}}
-            p.right-align.more-details
-              a(href='/books/{{book._id}}') More details
           .card-action
-            a(href='#') Added by: Michael Jackson
+            p.right-align.more-details
+              a.grey-text.tools(href='/books/{{book._id}}') More details
