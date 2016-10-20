@@ -23,8 +23,13 @@ div(ng-controller="booksListController as books")
 
         input.filled-in(type="checkbox", id="history")
         label(for="history") History &nbsp&nbsp&nbsp
+      .col.s12.search-container
+        .input-field.col.s8.search-box
+          i.material-icons.prefix search
+          input#searchText(type="text", ng-model="searchText")
+          label(for="searchText") Search for a book
   .row.books-container
-    .col.s12.l4(ng-repeat="book in books.bookCollection")
+    .col.s12.l4(ng-repeat="book in books.bookCollection | filter: searchText")
       .card.horizontal
         .card-image
           .book-cover(style="background-image: url({{book.bookCover || 'images/notAvailable.png' }})")
