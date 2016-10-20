@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
   passport = require('passport'),
   passportConfig = require('./app/passportConfig'),
   morgan = require('morgan'),
-  mongoStore = require('connect-mongo')({session: session});;
+  mongoStore = require('connect-mongo')({session: session});
 
 var app = express();
 var port = process.env.port || '5000';
