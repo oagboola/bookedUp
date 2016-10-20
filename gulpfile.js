@@ -48,6 +48,10 @@ gulp.task('browserify', function(){
 });
 
 gulp.task('nodemon', function(){
+
+  //load environment variables
+  require('dotenv').config();
+
   nodemon({
     script: 'server.js',
     ext: 'js'

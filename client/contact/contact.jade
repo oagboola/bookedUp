@@ -1,19 +1,33 @@
-.contact-page.row
+.contact-page.row(ng-controller="ContactController as contact")
  .contact-page-overlay
-  .col.s6.offset-s4
-    form.white.col.s8.contactForm
-      h3.center Contact Us
-      .row
-        .input-field.col.s12
-          input#name(type="text")
-          label(for="name") Name
-      .row
-        .input-field.col.s12
-          input#email(type="email")
-          label(for="email") Email Address
-      .row
-        .input-field.col.s12
-          textarea#message.materialize-textarea
-          label(for="message") Type in a message
-      .row
-        a.btn.right(href="#") Send
+  .row
+    .col.s6.offset-s4
+      form.white.col.s8.contactForm(name="contactForm")
+        .progress.orange.lighten-3(ng-if="contact.loading")
+          .indeterminate.orange
+        h3.center Contact Us
+        .row
+          .input-field.col.s12
+            input#name(type="text", ng-model="contact.message.name")
+            label(for="name") Name
+        .row
+          .input-field.col.s12
+            input#email(type="email", ng-model="contact.message.email", name="email" required)
+            label(for="email") Email Address
+            p.form-error.right(ng-show="contactForm.email.$invalid && contactForm.email.$dirty") *Please put in a correct email address
+        .row
+          .input-field.col.s12
+            input#subject(type="text", ng-model="contact.message.subject", name="subject" required)
+            label(for="subject") Subject
+            p.form-error.right(ng-show="contactForm.subject.$invalid && contactForm.subject.$dirty") *Subject is Required
+        .row
+          .input-field.col.s12
+            textarea#message.materialize-textarea(ng-model="contact.message.content", name="message" required)
+            label(for="message") Type in a message
+            p.form-error.right(ng-show="contactForm.message.$invalid && contactForm.message.$dirty") *Message is Required
+        .row
+          a.btn.right(href="#", ng-click="contact.sendMail()", ng-disabled="contactForm.$invalid || contact.loading") Send
+    .row
+      .col.s6.offset-s4
+        .col.s8.white
+          p.grey-text *If requesting for a book, highlight the name(s) of the book(s), how many copies and the reason for your request. Thanks.

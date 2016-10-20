@@ -1,6 +1,7 @@
 var books = require('./controllers/books.controller'),
     users = require('./controllers/users.controller'),
-    multer = require('multer');
+    multer = require('multer'),
+    contact = require('./controllers/mail.controller.js');
 
 module.exports = function(app){
 
@@ -60,4 +61,8 @@ module.exports = function(app){
   app.get('/*', function(req, res){
     res.sendfile('public/index.html');
   });
+
+  //contact
+  app.route('/api/contact')
+    .post(contact.sendMail);
 }
