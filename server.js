@@ -12,7 +12,20 @@ var mongoose = require('mongoose'),
 var app = express();
 var port = process.env.port || '5000';
 
-mongoose.connect(dbConfig.developmentDb);
+var env = process.env.NODE_ENV || 'development'
+var dbUrl = '';
+
+if(env == 'development'){
+  dbUrl = dbConfig.developmentDb
+}
+else if(env== 'test'){
+  dbUrl = dbConfig.testDB;
+}
+else if(env == 'production'){
+  dbUrl = dbUrl.productionDb;
+}
+
+mongoose.connect(dbUrl);
 
 app.use(express.static(__dirname + '/public'));
 
@@ -27,7 +40,7 @@ app.use(session({
   resave: true,
   secret: 'bookedup',
   store: new mongoStore({
-    url: dbConfig.developmentDb
+    url: dbUrl
   })
 }));
 
@@ -42,3 +55,5 @@ routes(app);
 app.listen(port, function(){
   console.log('app running on ', port);
 });
+
+module.exports = app;

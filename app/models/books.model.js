@@ -14,12 +14,18 @@ var booksSchema = Schema({
     type: Date,
     default: Date.now
   },
+  author: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required:  true
+  },
   dateOfPublication: Date,
   publisher: String,
   purchaseDate: Date,
-  description: String,
   pageNumber: Number,
-  author: String,
   edition: String,
   bookCover: String
 });
