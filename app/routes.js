@@ -5,7 +5,7 @@ var books = require('./controllers/books.controller'),
 
 module.exports = function(app){
 
-  var upload = multer({dest: '/uploads'});
+  var upload = multer({dest: 'uploads/'});
 
   app.route('/signup')
       .post(users.signup);
