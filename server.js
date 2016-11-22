@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
   mongoStore = require('connect-mongo')({session: session});
 
 var app = express();
-var port = process.env.port || '5000';
+var port = process.env.PORT || '5000';
 
 var env = process.env.NODE_ENV || 'development'
 var dbUrl = '';
