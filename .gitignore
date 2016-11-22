@@ -1,4 +1,3 @@
-public/*
-!public/images
+client/*
 node_modules
 .env
