@@ -22,7 +22,7 @@ else if(env== 'test'){
   dbUrl = dbConfig.testDB;
 }
 else if(env == 'production'){
-  dbUrl = dbUrl.productionDb;
+  dbUrl = dbConfig.productionDb;
 }
 
 mongoose.connect(dbUrl);
