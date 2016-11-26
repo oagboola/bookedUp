@@ -1,28 +1,32 @@
 .home-container.row(ng-controller="HomeController as home")
-  .col.s2.left-panel
-    h2.center-align.give-text Give
-      br
-      | a
+  .col.s4.m3.l2.left-panel
+    h2.center-align.give-text "A
       br
       | book
       br
+      | is
+      br
+      | a
+      br
+      | dream
+      br
+      | that
+      br
       | you
       br
-      | don't
+      | hold
       br
-      | need
+      | in
       br
-      | to
+      | your
       br
-      | someone
+      | hand"
       br
-      | who
-      br
-      | does
-  .homepage-banner.col.s10
+      span.orange-text - Neil Gaiman
+  .homepage-banner.col.s8.m9.l10
     .banner-overlay
       .row.authentication-box
-        .col.s4.offset-s4
+        .col.s12.m10.l4.offset-l4.offset-m1
           .row
             h3.white-text.center-align Welcome
           .row
@@ -36,11 +40,13 @@
               .row.z-depth-4.white.signup-box
                 .row.center-align
                   .col.s6
-                    a(href="/auth/facebook", target="_self") Login with Facebook
+                    a(href="/auth/facebook", target="_self")
+                      i.fb-login.medium.mdi.mdi-facebook-box
                   //- .col.s4
                   //-   a(href="#") Twitter
                   .col.s6
-                    a(href="/auth/google", target="_self") Login with Google
+                    a(href="/auth/google", target="_self")
+                      i.red-text.medium.mdi.mdi-google-plus
                 form.col.s12(name="loginForm" novalidate)
                   .row
                     .input-field.col.s12
@@ -59,11 +65,13 @@
               .row.z-depth-4.white.signup-box
                 .row.center-align
                   .col.s6
-                    a(href="/auth/facebook", target="_self") Login with Facebook
+                    a(href="/auth/facebook", target="_self")
+                      i.fb-login.medium.mdi.mdi-facebook-box
                   //- .col.s4
                   //-   a(href="#") Twitter
                   .col.s6
-                    a(href="/auth/google", target="_self") Login with Google
+                    a(href="/auth/google", target="_self")
+                      i.red-text.medium.mdi.mdi-google-plus
                 form.col.s12(name="newUser" novalidate)
                   .row
                     .input-field.col.s12
@@ -72,7 +80,7 @@
                       label(for="email") Email
                   .row
                     .input-field.col.s12
-                      i.material-icons.prefix account_circle
+                      i.material-icons.prefix lock_outline
                       input(type="password", id="password", ng-model="home.userSignup.password", required)
                       label(for="password") Password
                   .row

@@ -29,7 +29,7 @@ div(ng-controller="booksListController as books")
           input#searchText(type="text", ng-model="searchText")
           label(for="searchText") Search for a book
   .row.books-container
-    .col.s12.l4(ng-repeat="book in books.bookCollection | filter: searchText")
+    .col.s12.l4.bookCard(ng-repeat="book in books.bookCollection | filter: searchText")
       .card.horizontal
         .card-image
           .book-cover(style="background-image: url({{book.bookCover || 'images/notAvailable.png' }})")

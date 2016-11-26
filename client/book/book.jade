@@ -3,10 +3,10 @@ div.bookView(ng-controller="BookController as book")
   div.center {{book.currentBook.description}}
 
   .row.book-container
-    .col.s6.center
+    .col.s12.m8.l6.offset-m2.center
       .bookImage(style="background-image: url({{book.currentBook.bookCover || 'images/notAvailable.png'}});")
 
-    .col.s6.bookSpecs
+    .col.s12.m6.offset-m3.l6.bookSpecs
       h4.center.orange-text Book Details
       ul.collection.with-header
         li.collection-header

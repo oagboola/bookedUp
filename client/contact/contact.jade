@@ -1,8 +1,8 @@
 .contact-page.row(ng-controller="ContactController as contact")
  .contact-page-overlay
   .row
-    .col.s6.offset-s4
-      form.white.col.s8.contactForm(name="contactForm")
+    .col.s12.m6.offset-m3
+      form.white.col.s12.contactForm(name="contactForm")
         .progress.orange.lighten-3(ng-if="contact.loading")
           .indeterminate.orange
         h3.center Contact Us
@@ -28,6 +28,6 @@
         .row
           a.btn.right(href="#", ng-click="contact.sendMail()", ng-disabled="contactForm.$invalid || contact.loading") Send
     .row
-      .col.s6.offset-s4
-        .col.s8.white
+      .col.s12.m6.offset-m3
+        .col.s12.white
           p.grey-text *If requesting for a book, highlight the name(s) of the book(s), how many copies and the reason for your request. Thanks.
