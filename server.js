@@ -13,17 +13,14 @@ var app = express();
 var port = process.env.PORT || '5000';
 
 var env = process.env.NODE_ENV || 'development'
-var dbUrl = '';
 
-if(env == 'development'){
-  dbUrl = dbConfig.developmentDb
+var dbUrlMappings = {
+  development: dbConfig.developmentDb,
+  test: dbConfig.testDB,
+  production: dbConfig.productionDb
 }
-else if(env== 'test'){
-  dbUrl = dbConfig.testDB;
-}
-else if(env == 'production'){
-  dbUrl = dbConfig.productionDb;
-}
+
+var dbUrl = dbUrlMappings[env];
 
 mongoose.connect(dbUrl);
 
